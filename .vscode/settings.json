@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "*.py": "python",
+        "*.env": "properties",
+        "*.js": "javascript",
+        "*.html": "html",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "vector": "cpp",
+        "xiosbase": "cpp",
+        "queue": "cpp",
+        "xutility": "cpp"
+    }
+}
