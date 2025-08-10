@@ -5,8 +5,7 @@ This repository contains my solutions to the CSES Problem Set implemented in C++
 ## Current Progress
 
 Solutions are organized by problem categories:
-
-- **DP**
+- **DP (5)**
 
   - Coin Combinations I
   - Coin Combinations II
@@ -14,7 +13,7 @@ Solutions are organized by problem categories:
   - Minimizing Coins
   - Removing Digits
 
-- **Graphs**
+- **Graphs (6)**
 
   - Building Roads
   - Building Teams
@@ -23,7 +22,7 @@ Solutions are organized by problem categories:
   - Message Route
   - Round Trip
 
-- **Trees**
+- **Trees (1)**
 
   - Subordinates
 
@@ -36,14 +35,16 @@ Each solution is written in C++ and can be compiled using a C++ compiler.
 I've included a gitpush.bat script for quick commits. Use it like this:
 
 `
-gitpush <Your commit message without quotes>
+./gitpush <Your commit message without quotes>
 `
 
 This single command will add all changes, commit with your message, and push to the main branch.
 
 ### Build and Run a .cpp file using a single command line
 
-Running a CPP file in VSCode was giving a hell lot of issues, so th build.bat is a temporary workaround to quickly build and get the file running. Use it in the same directory as the file like this:
+Running a CPP file in VSCode was giving a hell lot of issues, so the build.bat is a temporary workaround to quickly build and get the file running. 
+
+Use it in the same directory as the file like this:
 
 `
 ./build FileName.cpp
