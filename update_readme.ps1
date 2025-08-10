@@ -58,7 +58,7 @@ I've included a `gitpush.bat` script for quick commits. Use it like this:
 ./gitpush <Your commit message without quotes>
 ```
 
-This single command will add all changes, commit with your message, and push to the main branch.
+This single command will modify the README, add all changes, commit with your message, and push to the main branch.
 
 ### Build and Run a .cpp file using a single command line
 
