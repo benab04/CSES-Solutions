@@ -1,15 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+// DP Approach
+int solve_dp(int n)
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    vector<int> dp(n + 1, INT_MAX);
 
-    int n;
+    dp[0] = 0;
 
-    cin >> n;
+    for (int i = 1; i <= n; i++)
+    {
+        int temp = i;
+        while (temp > 0)
+        {
+            if (temp % 10 == 0)
+            {
+                temp /= 10;
+                continue;
+            }
 
+            dp[i] = min(dp[i], dp[i - (temp % 10)] + 1);
+            temp /= 10;
+        }
+    }
+    return dp[n];
+}
+
+// Greedy Approach
+int solve_greedy(int n)
+{
     vector<int> digits;
 
     int ans = 0;
@@ -31,7 +50,21 @@ int main()
         digits.clear();
     }
 
-    cout << ans << endl;
+    return ans;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+
+    cin >> n;
+
+    int result = solve_dp(n);
+
+    cout << result << endl;
 
     return 0;
 }

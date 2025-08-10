@@ -5,6 +5,10 @@ This repository contains my solutions to the CSES Problem Set implemented in C++
 ## Current Progress
 
 Solutions are organized by problem categories:
+- **Additional Problems (1)**
+
+  - Removing Digits II
+
 - **DP (5)**
 
   - Coin Combinations I
