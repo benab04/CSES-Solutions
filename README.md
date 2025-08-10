@@ -41,6 +41,12 @@ gitpush <Your commit message without quotes>
 
 This single command will add all changes, commit with your message, and push to the main branch.
 
-## Work in Progress
+### Build and Run a .cpp file using a single command line
 
-This is an ongoing project. I'll continue to add more solutions as I solve them. Feel free to check back for updates.
+Running a CPP file in VSCode was giving a hell lot of issues, so th build.bat is a temporary workaround to quickly build and get the file running. Use it in the same directory as the file like this:
+
+`
+./build FileName.cpp
+`
+
+This will build an executable named FileName.exe and run it instantly.
