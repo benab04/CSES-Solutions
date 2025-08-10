@@ -1,12 +1,14 @@
 # Function to get all solution files recursively
 function Get-Solutions {
-    $categories = Get-ChildItem -Directory | Where-Object { $_.Name -ne ".git" }
-    $solutions = @{}
+    # Get all directories except .git, .vscode, and other common non-solution folders
+    $excludedFolders = @(".git", ".vscode", "node_modules", ".vs", "bin", "obj")
+    $categories = Get-ChildItem -Directory | Where-Object { $excludedFolders -notcontains $_.Name }
+    $solutions = [ordered]@{}
     
     foreach ($category in $categories) {
-        $files = Get-ChildItem $category.FullName -Filter "*.cpp"
+        $files = Get-ChildItem $category.FullName -Filter "*.cpp" -Recurse
         if ($files.Count -gt 0) {
-            $solutions[$category.Name] = $files.BaseName
+            $solutions[$category.Name] = ($files | ForEach-Object { $_.BaseName } | Sort-Object)
         }
     }
     return $solutions
@@ -15,6 +17,13 @@ function Get-Solutions {
 # Update README.md with current solutions
 function Update-Readme {
     $solutions = Get-Solutions
+    
+    # Check if there are any solutions
+    if ($solutions.Count -eq 0) {
+        Write-Host "No C++ solution files found in any directories."
+        return
+    }
+    
     $readmeContent = @"
 # CSES Problem Set Solutions
 
@@ -26,9 +35,10 @@ Solutions are organized by problem categories:
 
 "@
 
-    foreach ($category in $solutions.Keys | Sort-Object) {
+    # Sort categories alphabetically and add their solutions
+    foreach ($category in ($solutions.Keys | Sort-Object)) {
         $readmeContent += "`n- **$category**`n`n"
-        foreach ($solution in $solutions[$category] | Sort-Object) {
+        foreach ($solution in $solutions[$category]) {
             $readmeContent += "  - $solution`n"
         }
     }
@@ -54,5 +64,22 @@ This single command will add all changes, commit with your message, and push to 
 This is an ongoing project. I'll continue to add more solutions as I solve them. Feel free to check back for updates.
 "@
 
-    $readmeContent | Set-Content "README.md"
+    # Write the content to README.md
+    try {
+        $readmeContent | Out-File "README.md" -Encoding UTF8
+        Write-Host "README.md updated successfully!"
+        
+        # Display what was found for debugging
+        Write-Host "`nFound solutions in the following categories:"
+        foreach ($category in ($solutions.Keys | Sort-Object)) {
+            Write-Host "- $category ($($solutions[$category].Count) files)"
+        }
+    }
+    catch {
+        Write-Error "Failed to update README.md: $_"
+        exit 1
+    }
 }
+
+# Run the update
+Update-Readme
