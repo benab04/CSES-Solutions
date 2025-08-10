@@ -36,7 +36,7 @@ Each solution is written in C++ and can be compiled using a C++ compiler.
 I've included a gitpush.bat script for quick commits. Use it like this:
 
 `
-gitpush "Your commit message"
+gitpush <Your commit message without quotes>
 `
 
 This single command will add all changes, commit with your message, and push to the main branch.
