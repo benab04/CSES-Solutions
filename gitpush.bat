@@ -5,10 +5,24 @@ if "%*"=="" (
     exit /b 1
 )
 
-echo Adding files...
-git add .
+echo Updating README.md...
+powershell -ExecutionPolicy Bypass -File update_readme.ps1
+if %errorlevel% neq 0 (
+    echo Failed to update README
+    exit /b 1
+)
+
+echo Adding cpp files...
+git add *.cpp
 if %errorlevel% neq 0 (
     echo Failed to add files
+    exit /b 1
+)
+
+echo Adding README.md...
+git add README.md
+if %errorlevel% neq 0 (
+    echo Failed to add README
     exit /b 1
 )
 
