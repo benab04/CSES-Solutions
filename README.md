@@ -9,11 +9,12 @@ Solutions are organized by problem categories:
 
   - Removing Digits II
 
-- **DP (5)**
+- **DP (6)**
 
   - Coin Combinations I
   - Coin Combinations II
   - Dice Combinations
+  - Grid Paths I
   - Minimizing Coins
   - Removing Digits
 

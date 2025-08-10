@@ -1,38 +1,71 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
+// #include <bits/stdc++.h>
+// using namespace std;
+// typedef long long ll;
 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+// // DP Approach
+// ll solve_dp(ll n)
+// {
+//     vector<ll> dp(n + 1, LONG_MAX);
 
-    ll n;
+//     dp[0] = 0;
 
-    cin >> n;
+//     for (ll i = 1; i <= n; i++)
+//     {
+//         ll temp = i;
+//         while (temp > 0)
+//         {
+//             if (temp % 10 == 0)
+//             {
+//                 temp /= 10;
+//                 continue;
+//             }
 
-    vector<int> digits;
+//             dp[i] = min(dp[i], dp[i - (temp % 10)] + 1);
+//             temp /= 10;
+//         }
+//     }
+//     return dp[n];
+// }
 
-    ll ans = 0;
-    ll n1;
-    while (n > 0)
-    {
+// // Greedy Approach
+// int solve_greedy(int n)
+// {
+//     vector<int> digits;
 
-        ++ans;
-        n1 = n;
-        while (n1 != 0)
-        {
-            int digit = n1 % 10;
-            digits.push_back(digit);
-            n1 /= 10;
-        }
+//     int ans = 0;
+//     int n1;
+//     while (n > 0)
+//     {
 
-        int max_digit = *max_element(digits.begin(), digits.end());
-        n = n - max_digit;
-        digits.clear();
-    }
+//         ++ans;
+//         n1 = n;
+//         while (n1 != 0)
+//         {
+//             int digit = n1 % 10;
+//             digits.push_back(digit);
+//             n1 /= 10;
+//         }
 
-    cout << ans << endl;
+//         int max_digit = *max_element(digits.begin(), digits.end());
+//         n = n - max_digit;
+//         digits.clear();
+//     }
 
-    return 0;
-}
+//     return ans;
+// }
+
+// int main()
+// {
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(NULL);
+
+//     ll n;
+
+//     cin >> n;
+
+//     ll result = solve_dp(n);
+
+//     cout << result << endl;
+
+//     return 0;
+// }
