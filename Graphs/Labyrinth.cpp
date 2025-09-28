@@ -40,7 +40,8 @@ string bfs(int x, int y)
 
     while (!q.empty())
     {
-        auto [cx, cy] = q.front();
+        pair<int, int> p = q.front();
+        int cx = p.first, cy = p.second;
         q.pop();
 
         for (int i = 0; i < 4; i++)
